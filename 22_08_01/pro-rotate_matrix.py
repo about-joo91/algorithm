@@ -26,7 +26,17 @@ def solution(rows, columns, queries):
         for i in range(r1, r2):
             numbers[i-1][c1-1] = numbers[i][c1-1]
             min_num = min(min_num, numbers[i][c1-1])
-        print(numbers)
+        for i in range(c1, c2):
+            numbers[r2-1][i-1] = numbers[r2-1][i]
+            min_num = min(min_num, numbers[r2-1][i])
+        for i in range(r2-2 , r1-2, -1):
+            numbers[i+1][c2-1] = numbers[i][c2-1]
+            min_num = min(min_num, numbers[i][c2-1])
+        for i in range(c2-2, c1-2, -1):
+            numbers[r1-1][i+1] = numbers[r1-1][i]
+            min_num = min(min_num, numbers[r1-1][i])
+        numbers[r1-1][c1] = init_num
+        answer.append(min_num)
     return answer
 
 print(solution(6,6,[[2,2,5,4],[3,3,6,6],[5,1,6,3]]))
