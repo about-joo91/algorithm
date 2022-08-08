@@ -13,3 +13,5 @@ def solution(name):
     return min(answer)
 
 print(solution("JEROEN"))
+
+# 푸는중!
