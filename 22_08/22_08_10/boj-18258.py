@@ -4,7 +4,7 @@ from collections import deque
 iter_num = int(sys.stdin.readline())
 queue = deque()
 for _ in range(iter_num):
-    operator = sys.stdin.readline().split(' ')
+    operator = sys.stdin.readline().split()
     if operator[0] == 'push':
         queue.append(operator[1])
     elif operator[0] == 'size':
@@ -18,6 +18,6 @@ for _ in range(iter_num):
     elif operator[0] =='pop':
         if queue: print(queue.popleft())
         else: print(-1)
-    elif operator[0] == 'back':
+    else:
         if queue: print(queue[-1])
         else: print(-1)
