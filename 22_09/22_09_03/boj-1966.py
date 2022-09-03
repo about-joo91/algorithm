@@ -6,7 +6,7 @@ def get_cnt():
     global cnt
     while priarities:
         if priarities[0] == max(priarities):
-            priarity = priarities.popleft()
+            priarities.popleft()
             index = indexes.popleft()
             if index == target_index:
                 return cnt
