@@ -68,5 +68,3 @@ heap.heappush(5)
 while(heap.size() >0){
     console.log(heap.heappop())
 }
-
-console.log(heap.heap)
