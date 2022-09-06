@@ -7,3 +7,4 @@ for i in range(N-1, -1, -1):
     else:
         dp[i] = max(dp[i+1], dp[i+ schedules[i][0]] + schedules[i][1])
 print(dp[0])
+
