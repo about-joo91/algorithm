@@ -12,7 +12,8 @@
 ## 푼 문제집
 1. [DFS+BFS 필수 문제](https://www.acmicpc.net/workbook/view/1983)
 2. [브루트포스와 백트래킹을 지금 막 배운 그대들을 위한 문제집](https://www.acmicpc.net/workbook/view/12056)
+3. [그리디알고리즘을 지금 막 배운 그대들을 위한 문제집](https://www.acmicpc.net/workbook/view/12220)
 
 ## 정복 시도중인 문제집
 1. [DP알고리즘을 지금 막 배운 그대들을 위한 문제집](https://www.acmicpc.net/workbook/view/10007)
-2. [그리디알고리즘을 지금 막 배운 그대들을 위한 문제집](https://www.acmicpc.net/workbook/view/12220)
+
