@@ -18,3 +18,4 @@
 ## 정복 시도중인 문제집
 
 1. [DP알고리즘을 지금 막 배운 그대들을 위한 문제집](https://www.acmicpc.net/workbook/view/10007)
+2. [분할정복을 지금 막 배운 그대들을 위한 문제집](https://www.acmicpc.net/workbook/view/12123)
