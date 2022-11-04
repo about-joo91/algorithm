@@ -3,13 +3,13 @@ import copy
 import sys
 
 
-def paint_blind_spot(row, col,direction, cctv_map):
+def paint_blind_spot(row: int, col: int, direction:List[int], cctv_map:List[List[int]]) -> None:
 
     for d in direction:
         nrow, ncol = row, col
         while True:
-            nrow += direction_list[d][0]
-            ncol += direction_list[d][1]
+            nrow += directions[d][0]
+            ncol += directions[d][1]
             if 0 <= nrow < N and 0 <= ncol < M:
                 if cctv_map[nrow][ncol] == 6:
                     break
@@ -17,7 +17,7 @@ def paint_blind_spot(row, col,direction, cctv_map):
                     cctv_map[nrow][ncol] = "#"
             else: break
                 
-def get_cnt_of_blind_spot(depth: int, cctv_map: List[List[int]]) -> int:
+def get_cnt_of_blind_spot(depth: int, cctv_map: List[List[int]]) -> None:
     global answer
 
     if depth == len(cctvs):
@@ -36,13 +36,11 @@ def get_cnt_of_blind_spot(depth: int, cctv_map: List[List[int]]) -> int:
         coppied_cctv_map = copy.deepcopy(cctv_map)
 
 
-
-
 if __name__ == '__main__':
     sys.stdin = open('', 'r')
     N, M = map(int, input().split())
     cctv_map = [list(map(int, input().split())) for _ in range(N)]
-    direction_list = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+    directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
     cctv_direction = [
         [],
@@ -55,12 +53,12 @@ if __name__ == '__main__':
     answer = int(10e9)
 
     cctvs = []
-    for i in range(N):
-        for j in range(M):
-            if cctv_map[i][j] == 6:
+    for row_idx in range(N):
+        for col_idx in range(M):
+            if cctv_map[row_idx][col_idx] == 6:
                 continue
-            if cctv_map[i][j] != 0:
-                cctvs.append((i,j, cctv_map[i][j]))
+            if cctv_map[row_idx][col_idx] != 0:
+                cctvs.append((row_idx,col_idx, cctv_map[row_idx][col_idx]))
     get_cnt_of_blind_spot(0, cctv_map)
 
     print(answer)
