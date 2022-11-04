@@ -7,17 +7,14 @@ def paint_blind_spot(row: int, col: int, direction:List[int], cctv_map:List[List
 
     for d in direction:
         nrow, ncol = row, col
-        while True:
+        while 0 <= nrow < N and 0 <= ncol < M and cctv_map[nrow][ncol] != 6:
+            if cctv_map[nrow][ncol] == 0:
+                cctv_map[nrow][ncol] = "#"
+
             nrow += directions[d][0]
             ncol += directions[d][1]
-            if 0 <= nrow < N and 0 <= ncol < M:
-                if cctv_map[nrow][ncol] == 6:
-                    break
-                if cctv_map[nrow][ncol] == 0:
-                    cctv_map[nrow][ncol] = "#"
-            else: break
                 
-def get_cnt_of_blind_spot(depth: int, cctv_map: List[List[int]]) -> None:
+def count_blind_spot(depth: int, cctv_map: List[List[int]]) -> None:
     global answer
 
     if depth == len(cctvs):
@@ -31,7 +28,7 @@ def get_cnt_of_blind_spot(depth: int, cctv_map: List[List[int]]) -> None:
 
         paint_blind_spot(row, col, cctv_dir, coppied_cctv_map)
 
-        get_cnt_of_blind_spot(depth+1, coppied_cctv_map)
+        count_blind_spot(depth+1, coppied_cctv_map)
         
         coppied_cctv_map = copy.deepcopy(cctv_map)
 
@@ -59,6 +56,6 @@ if __name__ == '__main__':
                 continue
             if cctv_map[row_idx][col_idx] != 0:
                 cctvs.append((row_idx,col_idx, cctv_map[row_idx][col_idx]))
-    get_cnt_of_blind_spot(0, cctv_map)
+    count_blind_spot(0, cctv_map)
 
     print(answer)
