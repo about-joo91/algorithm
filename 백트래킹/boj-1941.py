@@ -1,6 +1,6 @@
 import sys
 
-sys.stdin = open('/Users/jujeonghan/Developer/camp/algorithm_study/백트래킹/1941_test.txt', 'r')
+sys.stdin = open('', 'r')
 
 answer = 0
 class_room = []

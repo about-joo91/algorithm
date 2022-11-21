@@ -1,6 +1,6 @@
 import heapq
 import sys
-sys.stdin = open('', 'r')
+input = sys.stdin.readline
 
 
 def get_shortest_way_from_start(start, to):
@@ -28,7 +28,7 @@ def get_shortest_way_from_start(start, to):
 
 if __name__ == '__main__':
 
-    N, M, start = map(int, input().split())
+    N, M, party_place = map(int, input().split())
 
     graph = [[ ] for _ in range(N+1)]
 
@@ -39,10 +39,9 @@ if __name__ == '__main__':
 
     total_distances = [0] * (N+1)
 
-    for i in range(1, N+1):
-        if i == start: continue
-        total_distances[i] += get_shortest_way_from_start(start, i)
-        total_distances[i] += get_shortest_way_from_start(i, start)
+    for home in range(1, N+1):
+        if home == party_place: continue
+        total_distances[home] += get_shortest_way_from_start(party_place, home)
+        total_distances[home] += get_shortest_way_from_start(home, party_place)
 
     print(max(total_distances))
-
