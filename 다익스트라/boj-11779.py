@@ -1,6 +1,6 @@
 import heapq
 import sys
-sys.stdin = open('/Users/jujeonghan/Developer/camp/algorithm_study/다익스트라/test.txt', 'r')
+sys.stdin = open('', 'r')
 N = int(input())
 M = int(input())
 graph = [[ ] for _ in range(N+1)]
