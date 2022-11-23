@@ -1,14 +1,6 @@
 from collections import deque
 import sys
 
-sys.stdin = open('', 'r')
-N = int(input())
-
-graph = [input() for _ in range(N)]
-r_g_weekness_visited = [[0] * N for _ in range(N)]
-group_visited = [[0] * N for _ in range(N)]
-directions = [[1, 0], [0, 1], [-1, 0], [0, -1]]
-
 def get_r_g_weakeness_group(row, column):
     r_g_queue = deque()
     r_g_queue.append((row, column))
@@ -57,14 +49,24 @@ def get_group(row, column):
     return True
 
 
-r_g_cnt = 0
-cnt = 0
-for i in range(N):
-    for j in range(N):
-        if not group_visited[i][j] and get_group(i, j):
-            cnt+=1
-        if not r_g_weekness_visited[i][j] and get_r_g_weakeness_group(i, j):
-            r_g_cnt+=1
+if __name__ == '__main__':
+    sys.stdin = open('', 'r')
+    N = int(input())
 
-print(f"{cnt} {r_g_cnt}")
+    graph = [input() for _ in range(N)]
+    r_g_weekness_visited = [[0] * N for _ in range(N)]
+    group_visited = [[0] * N for _ in range(N)]
+    directions = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+     
+
+    r_g_cnt = 0
+    cnt = 0
+    for i in range(N):
+        for j in range(N):
+            if not group_visited[i][j] and get_group(i, j):
+                cnt+=1
+            if not r_g_weekness_visited[i][j] and get_r_g_weakeness_group(i, j):
+                r_g_cnt+=1
+
+    print(f"{cnt} {r_g_cnt}")
 
