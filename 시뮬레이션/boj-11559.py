@@ -7,7 +7,7 @@ directions = [[0, 1], [1, 0], [-1, 0], [0, -1]]
 
 
 
-def check_same_color(color_type, row, col):
+def get_same_color_cnt(color_type:str, row:int, col:int) -> int:
     queue = deque()
     queue.append((row, col))
     visited[row][col]= 1
@@ -27,35 +27,42 @@ def check_same_color(color_type, row, col):
                     
     return cnt
 
-cnt = 0
-while True:
-    visited = [[0] * 6 for _ in range(12)]
-    answers = []
-    for i in range(12):
-        for j in range(6):
-            tmp = []
-            if not visited[i][j] and graph[i][j] != ".":
-                if check_same_color(graph[i][j], i, j) >= 4:
-                    for row, col in tmp:
-                        graph[row][col] = "."
-                    answers+= tmp
-    if len(answers) == 0:
-        break
-    cnt+=1
+def pull_down_above_puyo() -> None:
     for answer in answers:
         cur_row, cur_col = answer[0], answer[1]
 
         next_row = cur_row -1
         
-        while next_row >= 0 and graph[next_row][cur_col] == ".":
-            next_row-=1
-        if next_row < 0: continue
-
         while next_row >= 0:
-            graph[next_row][cur_col], graph[cur_row][cur_col] = graph[cur_row][cur_col], graph[next_row][cur_col]
-            next_row-=1
-            cur_row-=1
+            if graph[next_row][cur_col] == ".": 
+                next_row-=1
+            else:
+                graph[next_row][cur_col], graph[cur_row][cur_col] = graph[cur_row][cur_col], graph[next_row][cur_col]
+                next_row-=1
+                cur_row-=1
+
+
+
+if __name__ == "__main__":
+    cnt = 0
+    ROW = 12
+    COL = 6
+
+    while True:
+        visited = [[0] * COL for _ in range(ROW)]
+        answers = []
+        for i in range(ROW):
+            for j in range(COL):
+                tmp = []
+                if not visited[i][j] and graph[i][j] != ".":
+                    if get_same_color_cnt(graph[i][j], i, j) >= 4:
+                        for row, col in tmp:
+                            graph[row][col] = "."
+                        answers+= tmp
+        if len(answers) == 0:
+            break
+
+        pull_down_above_puyo()
+        cnt+=1
     
-
-
-print(cnt)
+    print(cnt)
