@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('/Users/jujeonghan/Developer/camp/algorithm_study/다이나믹_프로그래밍/15486.txt','r')
+sys.stdin = open('','r')
 
 N = int(input())
 
