@@ -1,6 +1,6 @@
 from collections import deque
 import sys
-sys.stdin = open('/Users/jujeonghan/Developer/camp/algorithm_study/시뮬레이션/test.txt', 'r')
+sys.stdin = open('', 'r')
 
 vertical_dice = deque([0] * 4)
 horizontal_dice = [0] * 3
