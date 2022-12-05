@@ -5,7 +5,7 @@ sys.stdin = open('/Users/jujeonghan/Developer/camp/algorithm_study/시뮬레이�
 
 
 
-def get_fastest_way():
+def get_fastest_way() -> None:
     global answer
 
     distances = [[[-1] * 5 for _ in range(5)] for _ in range(5)]
@@ -31,7 +31,7 @@ def get_fastest_way():
                     distances[next_height][next_row][next_col] = distances[cur_height][cur_row][cur_col]+1
                     queue.append((next_height, next_row, next_col))
 
-def rotate_board(height):
+def rotate_board(height:int) -> None:
     tmp = [[0] * 5 for _ in range(5)]
 
     for i in range(5):
@@ -40,7 +40,7 @@ def rotate_board(height):
 
     rotated_maze[height] = tmp
 
-def find_fastest_way_from_rotated_maze(depth):
+def find_fastest_way_from_rotated_maze(depth:int) -> None:
     
     if depth == 5:
         if rotated_maze[4][4][4]:
@@ -53,7 +53,7 @@ def find_fastest_way_from_rotated_maze(depth):
         rotate_board(depth)
 
 
-def make_cur_maze():
+def make_cur_maze() -> None:
     global rotated_maze
     for numbers in permutations(list(range(5))):
         rotated_maze = [maze[number] for number in numbers]
