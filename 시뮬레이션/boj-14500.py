@@ -1,6 +1,5 @@
 import sys
-sys.stdin = open('/Users/jujeonghan/Developer/camp/algorithm_study/시뮬레이션/test.txt','r')
-# input = sys.stdin.readline
+input = sys.stdin.readline
 
 N, M = map(int, input().split())
 graph = [list(map(int, input().split())) for _ in range(N)]
