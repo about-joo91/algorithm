@@ -6,35 +6,17 @@ N, M = map(int, input().split())
 
 maps = [list(map(int, input().split(' '))) for _ in range(N)]
 directions = [[0, 1], [1, 0], [-1, 0], [0, -1]]
-
 zeros = []
 viruses = []
-
 one_cnt = 0
 
 
 for i in range(N):
     for j in range(M):
-        if maps[i][j] == 0:
-            zeros.append((i, j))
-
-        elif maps[i][j] == 1:
-            one_cnt+=1
-
-        elif maps[i][j] == 2:
+        if maps[i][j] == 2:
             viruses.append((i, j))
-
-if len(viruses) == 0:
-    print(N*M - one_cnt)
-    sys.exit(0)
-
-if one_cnt == 0:
-    print(3)
-    sys.exit(0)
-
-if len(zeros) == 0:
-    print(0)
-    sys.exit(0)
+        if maps[i][j] == 1:
+            one_cnt+=1
 
 def bfs():
     visited = [[False] * M for _ in range(N)]
@@ -62,24 +44,25 @@ def bfs():
                 queue.append((next_row, next_col))
     return cnt
                 
-answer = 0
-back_tracking_visited = [[False] * M for _ in range(N)]
+answer = sys.maxsize
+back_tracking_visited = [False] * len(zeros)
 
-def backtracking(depth):
+def backtracking(start, depth):
     global answer
+    print(depth)
     if depth == 3:
         virus_cnt = bfs()
-        if answer < N * M - one_cnt - virus_cnt- 3:
-            answer = N * M - one_cnt - virus_cnt- 3
+        answer = min(answer, virus_cnt)
         return
 
-    for row, col in zeros:
-        if not back_tracking_visited[row][col]:
-            back_tracking_visited[row][col] = True
-            maps[row][col] = 1
-            backtracking(depth+1)
-            back_tracking_visited[row][col] = False
-            maps[row][col] = 0
+    else:
+        for idx in range(start, N * M):
+            row = i // M
+            col = i % M
+            if maps[row][col] == 0:
+                maps[row][col] = 1
+                backtracking(idx, depth+1)
+                maps[row][col] = 0
 
-backtracking(0)
-print(answer)
+backtracking(0,0)
+print(N * M - one_cnt - answer - 3)
