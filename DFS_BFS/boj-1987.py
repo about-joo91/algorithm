@@ -1,27 +1,29 @@
 import sys
-input = sys.stdin.readline
+input= sys.stdin.readline
 
 R, C = map(int, input().split())
-maps = [ list(input()) for _ in range(R)]
+maps = [list(input()) for _ in range(R)]
 
 directions = [[0, 1], [1, 0], [-1, 0], [0, -1]]
 
-used = set()
+queue = set([(0, 0, maps[0][0])])
+
 answer = 0
 
-def dfs(row, col):
-    global answer
-    answer = max(answer, len(used))
+while queue:
+    cur_row, cur_col, _set = queue.pop()
+
+    answer = max(answer, len(_set))
 
     for direction in directions:
-        next_row = row + direction[0]
-        next_col = col + direction[1]
-        if 0 > next_row or next_row >= R or 0 > next_col or next_col >= C: continue
-        if maps[next_row][next_col] in used: continue
-        used.add(maps[next_row][next_col])
-        dfs(next_row, next_col)
-        used.remove(maps[next_row][next_col])
+        next_row = cur_row + direction[0]
+        next_col = cur_col + direction[1]
 
-used.add(maps[0][0])
-dfs(0, 0)
+        if 0 > next_row or next_row >= R or 0 > next_col or next_col >=C: continue
+        if maps[next_row][next_col] in _set: continue
+
+        queue.add((next_row, next_col, maps[next_row][next_col] + _set))
+
+
 print(answer)
+    
