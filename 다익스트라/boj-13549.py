@@ -35,9 +35,6 @@
 
 
 import heapq
-import sys
-
-sys.stdin = open('/Users/jujeonghan/Developer/camp/algorithm_study/test.txt','r')
 
 N, K = map(int, input().split())
 INF = int(10e9)
@@ -52,7 +49,7 @@ def dijkstra():
     while priority_queue:
         time, cur_loc = heapq.heappop(priority_queue)
 
-        if time != fastest_times[cur_loc]:
+        if time > fastest_times[cur_loc]:
             continue
 
         for next_loc, n_time in [(cur_loc-1, 1), (cur_loc +1, 1), (cur_loc*2, 0)]:
