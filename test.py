@@ -1,36 +1,37 @@
 import sys
-import heapq
-input = sys.stdin.readline
+from collections import deque
+sys.stdin = open('/Users/jujeonghan/Developer/camp/algorithm_study/test.txt','r')
+N, SIS_LOC = map(int, input().split())
 
-N = int(input())
-M = int(input())
+visited = [False] * 100001
 
-graph = [[ ] for _ in range(N+1)]
-spanning_tree = [0] * (N+1)
-priority_queue = []
-cnt = 0
-answer = 0
+def bfs(start):
+    queue = deque()
+    queue.append((start, 0))
+    visited[start] = True
 
-for _ in range(M):
-    f_num, s_num, dist = map(int, input().split())
+    while queue:
+        cur_loc, time = queue.popleft()
 
-    graph[f_num].append((dist, s_num))
-    graph[s_num].append((dist, f_num))
+        if cur_loc == SIS_LOC:
+            return time
 
-spanning_tree[1] = 1
-for node in graph[1]:
-    heapq.heappush(priority_queue, (node[0], 1, node[1]))
+        next_loc = cur_loc * 2
+        if 0 <= next_loc < 100001 and not visited[next_loc]:
+            visited[next_loc] = True
+            queue.append((next_loc, time))
 
-while cnt < N-1:
-    cost, start_edge, end_edge = heapq.heappop(priority_queue)
+        next_loc = cur_loc - 1
+        if next_loc >= 0 and not visited[next_loc]:
+            visited[next_loc] = True
+            queue.append((next_loc, time+1))
 
-    if spanning_tree[end_edge]: continue
+        next_loc = cur_loc + 1
+        if 0 <= next_loc < 100001 and not visited[next_loc]:
+            visited[next_loc] = True
+            queue.append((next_loc, time+1))
 
-    spanning_tree[end_edge] = 1
-    cnt+=1
-    answer += cost
-    for next_node in graph[end_edge]:
-        if not spanning_tree[next_node[1]]:
-            heapq.heappush(priority_queue, (next_node[0], end_edge, next_node[1]))
+        
+        
 
-print(answer)
+print(bfs(N))
