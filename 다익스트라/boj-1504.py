@@ -1,6 +1,8 @@
 import sys
 import heapq
 
+input = sys.stdin.readline
+
 def dijkstra(start, end):
     distances = [INF] * (N+1)
     distances[start] = 0
@@ -31,6 +33,7 @@ for _ in range(E):
 
 
 u, v = map(int, input().split())
+
 
 first = dijkstra(1, u) + dijkstra(u, v) + dijkstra(v, N)
 second = dijkstra(1, v) + dijkstra(v, u)+ dijkstra(u, N)
