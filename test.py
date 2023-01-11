@@ -1,25 +1,22 @@
-N, M = map(int, input().split())
+import sys
+# N, K = map(int, input().split())
 
-def get_two_cnt_and_five_cnt(n):
-    two_cnt = 0
-    five_cnt = 0
+N, K = 15,12
 
-    i = 2
-    while i <= n:
-        two_cnt += n//i
-        i *= 2
-    i = 5
-    while i <= n:
-        five_cnt += n//i
-        i *= 5
+dp = [True] * (N+1)
+cnt = 0
 
-    return two_cnt, five_cnt
-
-N_two_cnt, N_five_cnt = get_two_cnt_and_five_cnt(N)
-M_two_cnt, M_five_cnt = get_two_cnt_and_five_cnt(M)
-N_minus_M_two_cnt, N_minus_M_five_cnt = get_two_cnt_and_five_cnt(N-M)
-
-total_two_cnt = N_two_cnt - (M_two_cnt + N_minus_M_two_cnt)
-total_five_cnt = N_five_cnt - (M_five_cnt + N_minus_M_five_cnt)
-
-print(min(total_two_cnt, total_five_cnt))
+for i in range(2, N+1):
+    if dp[i]:
+        cnt+=1
+        if cnt == K:
+            print(i)
+            sys.exit(0)
+        for j in range(i+i, N+1, i):
+            if dp[j]:
+                cnt+=1
+                if cnt == K:
+                    print(j)
+                    sys.exit(0)
+            dp[j] = False
+            
