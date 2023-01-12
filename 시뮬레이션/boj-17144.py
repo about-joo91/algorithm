@@ -1,6 +1,6 @@
 import sys
-import pprint
-sys.stdin = open('/Users/jujeonghan/Developer/camp/algorithm_study/test.txt','r')
+input = sys.stdin.readline
+
 R, C, T = map(int, input().split())
 room = []
 for _ in range(R):
@@ -82,5 +82,5 @@ while T:
     clear_upper_area()
     clear_down_area()
     T-=1
-print(room)
+
 print(sum(map(sum, room)) + 2)
