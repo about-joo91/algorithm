@@ -20,9 +20,9 @@ def backtracking(depth, cur_value):
     for idx in range(len(op_cnts)):
         if op_cnts[idx]:
             op_cnts[idx]-=1
-            if i == 0: backtracking(depth+1, cur_value + numbers[depth])
-            elif i == 1: backtracking(depth+1, cur_value - numbers[depth])
-            elif i == 2: backtracking(depth+1, cur_value * numbers[depth])
+            if idx == 0: backtracking(depth+1, cur_value + numbers[depth])
+            elif idx == 1: backtracking(depth+1, cur_value - numbers[depth])
+            elif idx == 2: backtracking(depth+1, cur_value * numbers[depth])
             else: backtracking(depth+1, int(cur_value / numbers[depth]))
             op_cnts[idx]+=1
 
