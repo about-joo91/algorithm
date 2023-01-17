@@ -1,5 +1,4 @@
 import sys
-sys.stdin = open('/Users/jujeonghan/Developer/camp/algorithm_study/test.txt','r')
 input = sys.stdin.readline
 N = int(input().rstrip())
 
