@@ -1,6 +1,3 @@
-import sys
-sys.stdin = open('/Users/jujeonghan/Developer/camp/algorithm_study/test.txt', 'r')
-
 N = int(input())
 numbers = list(map(int, input().split()))
 r_numbers = numbers[::-1]
@@ -17,9 +14,6 @@ for i in range(N):
 
 result = [0] * N
 for i in range(N):
-    print(dp[i], r_dp[N-i-1])
     result[i] = dp[i] + r_dp[N-i-1] - 1
 
-print(dp)
-print(r_dp)
 print(max(result))
