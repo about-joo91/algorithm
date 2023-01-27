@@ -1,6 +1,4 @@
-import sys
 
-sys.stdin = open('/Users/jujeonghan/Developer/camp/algorithm_study/다익스트라/test.txt', 'r')
 N = 6
 M = 8
 INF = int(10e6)
