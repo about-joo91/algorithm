@@ -1,1 +1,7 @@
-abc topabcoder
+6
+a
+a
+a
+b
+b
+b
