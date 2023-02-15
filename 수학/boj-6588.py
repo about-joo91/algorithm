@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 n = 1000001
 erasto = [True] * n
 erasto[0] = False
