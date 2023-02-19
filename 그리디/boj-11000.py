@@ -1,6 +1,6 @@
 import sys
 import heapq
-sys.stdin = open('/Users/jujeonghan/Developer/camp/algorithm_study/test.txt','r')
+input = sys.stdin.readline
 
 N = int(input())
 START, END = 0, 1
