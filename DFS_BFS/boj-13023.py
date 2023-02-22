@@ -10,23 +10,23 @@ for _ in range(M):
 	graph[fir].append(sec)
 	graph[sec].append(fir)
 
-def dfs(cur_node, depth):
-	global answer
+def is_cur_node_linked_fourth_depth(cur_node, depth):
+	global is_linked_fourth_depth
 	if depth == 4:
-		answer = True
+		is_linked_fourth_depth = True
 		return
 	visited[cur_node] = True
 	for next_node in graph[cur_node]:
 		if not visited[next_node]:
-			dfs(next_node, depth+1)
+			is_cur_node_linked_fourth_depth(next_node, depth+1)
 			visited[next_node] = False
 
 visited = [False] * N
-answer= False
+is_linked_fourth_depth = False
 for i in range(N):
-	dfs(i, 0)
+	is_cur_node_linked_fourth_depth(i, 0)
 	visited[i] = False
-	if answer:
+	if is_linked_fourth_depth:
 		break
 
-print(1 if answer else 0)
+print(int(is_linked_fourth_depth))
