@@ -6,7 +6,6 @@ answer = 0
 
 for idx in range(W):
     while stack and cities[stack[-1]] < cities[idx]:
-        print(stack)
         prev_city = stack.pop()
         if not stack: break
         distance = (idx - stack[-1]) - 1
