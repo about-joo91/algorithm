@@ -1,6 +1,6 @@
 import sys
 from collections import deque
-sys.stdin = open('test.txt','r')
+input = sys.stdin.readline
 
 def get_size_of_waste(start_row, start_col):
     queue = deque()
