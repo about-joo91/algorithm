@@ -1,6 +1,3 @@
-import sys
-sys.stdin = open('test.txt','r')
-
 N = int(input())
 jump_numbers = [0] + list(map(int, input().split()))
 INF = int(10e9)
