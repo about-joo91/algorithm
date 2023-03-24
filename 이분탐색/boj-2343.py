@@ -1,7 +1,5 @@
 import sys
-sys.stdin = open('test.txt','r')
-
-
+input = sys.stdin.readline
 
 N, M = map(int, input().split())
 video_data = list(map(int, input().split()))
@@ -12,7 +10,7 @@ right = sum(video_data)
 answer = int(10e9)
 
 while left <= right:
-    mid = (left + right) // 2
+    mid = (left + right)//2
     cnt = 1
     cur_size = 0
     idx = 0
