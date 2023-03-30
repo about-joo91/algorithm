@@ -1,6 +1,3 @@
-import sys
-sys.stdin = open('test.txt','r')
-
 def get_count_of_armor():
     left = 0
     right = len(materials)-1
