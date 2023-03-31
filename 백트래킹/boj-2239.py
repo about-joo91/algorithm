@@ -1,5 +1,4 @@
 import sys
-sys.stdin = open('test.txt','r')
 input = sys.stdin.readline
 
 def can_write_target_in_square(r, c, target):
@@ -42,11 +41,12 @@ def print_board_when_numbers_are_filled(depth):
             print_board_when_numbers_are_filled(depth+1)
             board[cur_row][cur_col] = 0
 
-board = [list(map(int, list(input().rstrip()))) for _ in range(9)]
-zeros = []
-for i in range(9):
-    for j in range(9):
-        if board[i][j] == 0:
-            zeros.append((i, j))
+if __name__ == "__main__":
+    board = [list(map(int, list(input().rstrip()))) for _ in range(9)]
+    zeros = []
+    for i in range(9):
+        for j in range(9):
+            if board[i][j] == 0:
+                zeros.append((i, j))
 
-print_board_when_numbers_are_filled(0)
+    print_board_when_numbers_are_filled(0)
