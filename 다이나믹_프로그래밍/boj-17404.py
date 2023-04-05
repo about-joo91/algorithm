@@ -1,6 +1,3 @@
-import sys
-sys.stdin = open('test.txt','r')
-
 N = int(input())
 houses = [list(map(int, input().split())) for _ in range(N)]
 INF = int(10e6)
