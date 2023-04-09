@@ -1,6 +1,3 @@
-import sys
-sys.stdin = open('test.txt','r')
-
 def is_prime(cur_number):
     if cur_number < 2:
         return False
