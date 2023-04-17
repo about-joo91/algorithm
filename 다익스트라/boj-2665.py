@@ -1,10 +1,10 @@
 import sys
-sys.stdin = open('test.txt','r')
 import heapq
+input = sys.stdin.readline
 
-N = int(input())
+N = int(input().rstrip())
 INF = int(10e9)
-rooms = [list(map(int, list(input()))) for _ in range(N)]
+rooms = [list(map(int, list(input().rstrip()))) for _ in range(N)]
 distances = [[INF] * N for _ in range(N)]
 directions = [[0, 1], [1, 0], [-1, 0], [0, -1]]
 
