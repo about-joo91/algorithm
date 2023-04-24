@@ -1,5 +1,3 @@
-import sys
-sys.stdin = open('test.txt','r')
 from functools import reduce
 
 def get_gcd(A, B):
