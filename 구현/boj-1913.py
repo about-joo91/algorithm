@@ -1,34 +1,33 @@
 import sys
 input = sys.stdin.readline
 
-N = int(input().rstrip()) 
-Find = int(input().rstrip())
-arr = [ [0 for _ in range(N)] for _ in range(N) ]
-dy =[0,1,0,-1]
-dx =[1,0,-1,0]
-x ,y = 0,0
-num = N * N -1
-arr[x][y] = N * N
+N = 7
+target = 1
+board = [[0]*N for _ in range(N)]
+directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+r = c = N //2
+length = 0
+cur_num = 1
+board[r][c] = cur_num
+answer = [r+1, c+1]
 
 
 while True:    
-    for i in range(4):   
-      while True :
-        x = x + dx[i]
-        y = y + dy[i]
-        if x >= N or y >= N or x <  0 or y < 0 or arr[x][y] != 0 :
-            x -= dx[i]
-            y -= dy[i]         
-            break
-        else:           
-            arr[x][y] = num
-            if arr[x][y] == Find:
-                ans1, ans2 = x,y
-            num -= 1            
-    if x == N//2 and y == N//2:
-        break
+    for direction in directions:
+      for _ in range(length):
+        r += direction[0]
+        c += direction[1]
+        cur_num+=1
+        board[r][c] = cur_num
+        if cur_num == target:
+            answer = [r+1, c+1]
+    if r == c == 0:
+       break
+    r -=1
+    c -=1
+    length+=2
 
 
-for i in arr:
-    print(*i)         
-print(ans1+1,ans2+1)
+for row in board:
+    print(*row)         
+print(*answer)
