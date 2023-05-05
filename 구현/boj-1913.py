@@ -1,9 +1,9 @@
 import sys
 input = sys.stdin.readline
 
-N = 7
-target = 1
-board = [[0]*N for _ in range(N)]
+N = int(input().rstrip()) 
+target = int(input().rstrip())
+board = [ [0 for _ in range(N)] for _ in range(N) ]
 directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]
 r = c = N //2
 length = 0
