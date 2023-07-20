@@ -1,9 +1,8 @@
 import sys
-sys.stdin = open('test.txt','r')
+input = sys.stdin.readline
 
-N = int(input())
-INF = int(10e9)
-graph = [list(input()) for _ in range(N)]
+N = int(input().rstrip())
+graph = [list(input().rstrip()) for _ in range(N)]
 answer = [[0] * N for _ in range(N)]
 
 for i in range(N):
