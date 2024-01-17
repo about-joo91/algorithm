@@ -1,0 +1,17 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = [s[0]]
+        bracket_mapper = {
+            '(': ')',
+            '{': '}',
+            '[': ']'
+        }
+        for char in s[1:]:
+            if stack and stack[-1] in [')', '}', ']']:
+                stack.append(char)
+            elif stack and bracket_mapper[stack[-1]] == char:
+                stack.pop()
+            else:
+                stack.append(char)
+
+        return len(stack) == 0
